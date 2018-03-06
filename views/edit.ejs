@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>编辑</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>编辑</h1>
+    学号：<input type="text" id="id" value="<%=student.id%>" /><br>
+    姓名：<input type="text" id="name" value="<%=student.name%>" /><br>
+    性别：<input type="text" id="sex" value="<%=student.sex%>" /><br>
+    年龄：<input type="number" id="age" value="<%=student.age%>" /><br>
+    班级：<input type="text" id="class" value="<%=student.class%>" /><br>
+	<button onClick="save()">保存</button>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript">
+	function save() {
+		$.ajax({
+			url: '/menu/save',
+			type: 'post',
+			data: {
+				id: $('#id').val(),
+				name: $('#name').val(),
+				sex: $('#sex').val(),
+				age: $('#age').val(),
+				class: $('#class').val()
+			},
+			dataType: "json",
+			success: function(res) {
+				alert(res.message);
+				if(res.code == 1) {
+					location.href = "/menu";
+				}
+				
+			}
+		})
+	}
+</script>
+  </body>
+</html>
