@@ -1,0 +1,3 @@
+SET DEBUG=my-express:* & npm start
+
+nodemon ./bin/www

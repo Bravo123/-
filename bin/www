@@ -5,7 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('zengshangaicha:server');
+var debug = require('debug')('StudentManagementSystem:server');
 var http = require('http');
 
 /**

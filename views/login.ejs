@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>登录</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1>登录</h1>
-    用户名：<input type="text" id="username" /><br>
-    密码：<input type="password" id="psw"><br>
-<button onClick="login()">登录</button>
+	<head>
+		<title>登录</title>
+		<link rel='stylesheet' href='stylesheets/common.css' />
+	</head>
+	<body>
+		<!-- logo -->
+		<div class="logo">
+			<img src="" alt="" />
+		</div>
+
+		<!-- 登入 -->
+		<div class="p-login-area">
+			<div class="p-phoneNum">
+				<div class="p-title">手机号</div>
+				<div class="p-phone">
+					<input type="text" id="username" placeholder="输入您的手机号" />
+				</div>
+			</div>
+			<div class="p-yzmNum">
+				<div class="p-title">验证码</div>
+				<div class="p-yzm">
+					<input type="text" id="psw" placeholder="输入您收到的验证码" />
+					<span class="yzm">获取验证码</span>
+				</div>
+			</div>
+		</div>
+<!-- <button onClick="login()">登录</button> -->
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <script type="text/javascript">
 	function login() {
@@ -21,7 +39,6 @@
 			},
 			dataType: "json",
 			success: function(res) {
-				console.log(res);
 				if(res.code != 1) {
 					alert(res.message);
 					return;
@@ -31,6 +48,7 @@
 			}
 		})
 	}
+	$('.yzm').on('click', login);
 </script>
   </body>
 </html>

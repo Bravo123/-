@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>遇见不一样的新闻</title>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="/stylesheets/main.css" />
+</head>
+<body>
+	<header class="header">
+		遇见,不一样的新闻
+	</header>
+	<div class="container">
+		<div class="topic">
+			
+			<div class="topic-list">
+				<% for(let i=0; i < topicList.length; i++) { %>
+					<h1 class="topic-area"><%=topicList[i].name %></h1>
+					<div class="topic-item" data-topicid=<%= topicList[i].id %> >
+						<div class="topic-img">
+							<img src="<%=topicList[i].img%>" alt="新闻封面">
+						</div>
+						<div class="topic-title"><%=topicList[i].des %></div>
+					</div>
+				<% } %>
+			</div>
+		</div>
+	</div>
+	<script src="/javascript/main.js"></script>
+</body>
+</html>

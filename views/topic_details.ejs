@@ -1,0 +1,65 @@
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>
+		<%=news[0].des %>
+	</title>
+	<link rel="stylesheet" href="/stylesheets/topicDetails.css">
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="title"><%=news[0].des %></div>
+		<div class="summary"><span>导语:</span><%=news[0].summary %></div>
+		<ul class="tab">
+			<li class="tab-tl active">
+				<span class="icon-news active">时间轴</span>
+			</li>
+			<li class="tab-ac">
+				<span class="icon-article">解读</span>
+			</li>
+			<li class="tab-vd">
+				<span class="icon-video">视频</span>
+			</li>
+		</ul>
+		<!-- 时间轴  -->
+		<div class="topic-list">
+			<% let year = news[0].date.split('-')[0]; %>
+			<div class="year">
+				<%=year %>
+			</div>
+			<% for (let i = 0; i < news.length; i++) { %>
+				<% let key = (news[i].key === '1') ? 'key-news' : '' %>
+				<div class="news <%=key %>">
+					<% let month_day = news[i].date.split('-')[1] + '/' + news[i].date.split('-')[2] %>
+					<div class="date"><%=month_day %></div>
+					<div class="lines">
+						<div class="dot"></div>
+					</div>
+					<a class="box" href="/menu/news?newsId=<%= news[i].newsId%>">
+						<div class="ntitle"><%=news[i].name%></div>
+						<img src='<%=news[i].img %>'>
+					</a>
+				</div>
+			<% } %>
+			<button class="return-topic">返回专区看看</button>
+		</div>
+
+		<!-- 解读 -->
+		<div class="article hide">
+			<%- news[0]['article'] %>
+			<button class="return">返回时间轴看看</button>
+		</div>
+
+		<!-- 视频 -->
+		<div class="video hide">
+			<video src="<%=news[0].video%>" controls='controls' >您的浏览器不支持video标签</video>
+		</div>
+		
+	</div>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script src="/javascript/topic_details.js"></script>
+</body>
+
+</html>

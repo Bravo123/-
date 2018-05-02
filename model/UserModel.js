@@ -4,11 +4,9 @@ var Schema = mongoose.Schema;
 
 var User = new Schema({
     username : String,
-    psw      : String,
-    date     : {type:Date, default: Date.now},
-    del      : String
+    pwd      : String
 });
 
-var UserModel = mongoose.model('user', User);
+var UserModel = mongoose.model('users', User);
 
 module.exports = UserModel;

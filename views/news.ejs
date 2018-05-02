@@ -1,0 +1,64 @@
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>
+		每一篇新闻都不是被孤立的
+	</title>
+	<link rel="stylesheet" href="/stylesheets/news.css">
+	<link rel="stylesheet" href="/stylesheets/dialog.css">
+</head>
+
+<body>
+	<div class="wrapper" data-id="<%=news[0].newsId %>">
+		<div class="title"><%=news[0].name %></div>
+		<div class="resource"><%=news[0].resource%></div>
+		<!-- 时间轴  -->
+		<div class="news-content">
+			<%=news[0].content%>
+		</div>
+		<hr />
+		<div class="comment-list">
+			<% let commentList = news[0].comment; %>
+			<% for (let i = 0; i < commentList.length; i++) { %>
+				<div class="comment-item">
+					<p><%=commentList[i].username %> 说： <span class="date"><%=commentList[i].date %></span></p>
+					<p class="comment-content"><%=commentList[i].comment %></p>
+				</div>
+			<% } %>
+		</div>
+		<div class="comment">
+			我也来说两句
+		</div>
+	</div>
+
+	<div class="dialog hide">
+		<h1 class="tip">您还没有账号，先注册一个吧</h1>
+		<div class="register-wrapper hide">
+			<label for="reg_username">用户名:</label>
+			<input id="reg_username" name="reg_username" placeholder="biubiubiu~" /><br />
+			<label for="reg_pwd">密码:</label>
+			<input id="reg_pwd" name="reg_pwd" type="password" placeholder="dadada~" /><br />
+			<button class="register">注册</button>
+		</div>
+		<div class="login-wrapper hide">
+			<label for="login_username">用户名:</label>
+			<input id="login_username" name="login_username" placeholder="biubiubiu~" /><br />
+			<label for="login_pwd">密码:</label>
+			<input id="login_pwd" name="login_pwd" type="password" placeholder="dadada~" /><br />
+			<button class="login">登陆</button>
+		</div>
+		<div class="commit-wrapper hide">
+			<label for="commit_content">内容</label>
+			<input id="commit_content" name="commit_content" placeholder="biubiubiu~" /><br />
+			<button class="commit">提交评论</button>
+		</div>
+	</div>
+	<div class="mask hide"></div>
+
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script src="/javascript/dialog.js"></script>
+	<script src="/javascript/news.js"></script>
+</body>
+
+</html>

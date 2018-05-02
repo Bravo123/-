@@ -1,4 +1,5 @@
 var express = require('express');
+var http = require('http');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -7,8 +8,14 @@ var bodyParser = require('body-parser');
 var session = require('express-session')
 //连接mongoDB
 const mongoose = require('mongoose');
- 
 mongoose.connect('mongodb://localhost/test');
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function (callback) {
+    console.log("数据库成功连接");
+});
+
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -34,7 +41,7 @@ app.use(session({
   saveUninitialized: false, // don't create session until something stored  
   secret: 'love'  
 }));  
-app.use('/', index);
+app.use('/', menu);
 app.use('/users', users);
 app.use('/menu', menu);
 
@@ -56,5 +63,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+// var server = http.createServer(app);
+// server.listen(3001);
 
 module.exports = app;
