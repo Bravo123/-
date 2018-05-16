@@ -30,8 +30,8 @@ $('.comment').on('click', () =>  {
 	} else {
 		$tip.text('快去注册吧~');
 		$registerWrapper.removeClass('hide');
-		$('.commit').on('click', () => {
-			goCommit();
+		$('.register').on('click', () => {
+			goRegister();
 		});	
 	}
 
